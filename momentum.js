@@ -7,19 +7,22 @@ Template.momentum.rendered = function() {
   if (! plugin)
     return console.error("Can't find momentum plugin '" + this.data.with + "'");
 
-  this.firstNode.parentNode._uihooks = plugin;
+  var hooks = plugin(_.without(this.data, 'with'));
+  
+  check(hooks, {
+    insertElement: Function,
+    moveElement: Function,
+    removeElement: Function
+  });
+  
+  this.firstNode.parentNode._uihooks = hooks;
 }
 
 Momentum = {
   plugins: {},
-  registerPlugin: function(name, hooks) {
+  registerPlugin: function(name, plugin) {
     check(name, String);
-    check(hooks, {
-      insertElement: Function,
-      moveElement: Function,
-      removeElement: Function
-    });
-
-    this.plugins[name] = hooks;
+    check(plugin, Function)
+    this.plugins[name] = plugin;
   }
 }

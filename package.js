@@ -3,7 +3,7 @@ Package.describe({
 });
 
 Package.on_use(function (api) {
-  api.use(['templating', 'check', 'jquery'], 'client');
+  api.use(['templating', 'check', 'jquery', 'underscore'], 'client');
   
   api.add_files([
     'lib/velocity/jquery.velocity.js',

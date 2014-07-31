@@ -1,0 +1,28 @@
+<head>
+  <title>example</title>
+</head>
+
+<body>
+  <h1>Momentum Example</h1>
+  {{> css}}
+</body>
+
+<template name="css">
+  <h2>Plugin: css</h2>
+  
+  <div class="container if-container">
+    {{#momentum with='css'}}
+      {{#if foo}}
+        <div class="content">Content!</div>
+      {{/if}}
+    {{/momentum}}
+  </div>
+  
+  <div class="container each-container">
+    {{#momentum with='css'}}
+      {{#each items}}
+        <div class="content">Content!</div>
+      {{/each}}
+    {{/momentum}}
+  </div>
+</template>

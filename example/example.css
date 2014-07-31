@@ -1,0 +1,26 @@
+.container {
+  background: #eee;
+  width: 200px;
+  height: 200px;
+  margin-bottom: 10px;
+}
+
+.content {
+  background: #ddd;
+  width: 100px;
+  
+  transition: opacity 500ms ease-in;
+  opacity: 1;
+}
+
+.content.off-screen {
+  opacity: 0;
+}
+
+.if-container .content {
+  height: 100px;
+}
+
+.each-container .content {
+  height: 20px;
+}

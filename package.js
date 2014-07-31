@@ -7,6 +7,7 @@ Package.on_use(function (api) {
   
   api.add_files([
     'lib/velocity/jquery.velocity.js',
+    'lib/velocity/velocity.ui.js',
     'momentum.html', 
     'momentum.js',
     'plugins/css.js',

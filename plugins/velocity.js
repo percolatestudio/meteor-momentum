@@ -4,7 +4,7 @@ Momentum.registerPlugin('velocity', function(options) {
       $(node)
         .insertBefore(next)
         // .velocity("fadeIn", { duration: 500 });
-        .velocity("slideDown", { duration: 500 });
+        .velocity("transition.slideLeftIn", { duration: 500 });
     },
     moveElement: function(node, next) {
       this.removeElement(node);
@@ -12,7 +12,7 @@ Momentum.registerPlugin('velocity', function(options) {
     },
     removeElement: function(node) {
       $(node)
-        .velocity("slideUp", { 
+        .velocity("transition.slideLeftOut", { 
         // .velocity("fadeOut", { 
           duration: 500,
           complete: function() {

@@ -2,7 +2,7 @@ if (Meteor.isClient) {
   var Items = new Meteor.Collection(null);
   
   Session.setDefault('foo', true)
-  Template.css.helpers({
+  Template.hello.helpers({
     foo: function() {
       return Session.get('foo');
     },
@@ -12,7 +12,7 @@ if (Meteor.isClient) {
     }
   });
   
-  Template.css.events({
+  Template.hello.events({
     'click .if-container': function() {
       Session.set('foo', ! Session.get('foo'));
     },

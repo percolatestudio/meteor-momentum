@@ -8,13 +8,6 @@
 .content {
   background: #ddd;
   width: 100px;
-  
-  transition: opacity 500ms ease-in;
-  opacity: 1;
-}
-
-.content.off-screen {
-  opacity: 0;
 }
 
 .if-container .content {
@@ -24,3 +17,18 @@
 .each-container .content {
   height: 20px;
 }
+
+.plugin {
+  float: left;
+  margin-left: 10px;
+}
+
+.plugin.css .content {
+  transition: opacity 500ms ease-in;
+  opacity: 1;
+}
+
+.plugin.css .content.off-screen {
+  opacity: 0;
+}
+

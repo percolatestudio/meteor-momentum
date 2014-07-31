@@ -4,25 +4,49 @@
 
 <body>
   <h1>Momentum Example</h1>
-  {{> css}}
+  {{> hello}}
+  
+  
 </body>
 
-<template name="css">
-  <h2>Plugin: css</h2>
+<template name="hello">
+  <div class="plugin css">
+    <h2>Plugin: css</h2>
   
-  <div class="container if-container">
-    {{#momentum with='css'}}
-      {{#if foo}}
-        <div class="content">Content!</div>
-      {{/if}}
-    {{/momentum}}
+    <div class="container if-container">
+      {{#momentum with='css'}}
+        {{#if foo}}
+          <div class="content">Content!</div>
+        {{/if}}
+      {{/momentum}}
+    </div>
+  
+    <div class="container each-container">
+      {{#momentum with='css'}}
+        {{#each items}}
+          <div class="content">Content!</div>
+        {{/each}}
+      {{/momentum}}
+    </div>
   </div>
+
+  <div class="plugin velocity">
+    <h2>Plugin: velocity</h2>
   
-  <div class="container each-container">
-    {{#momentum with='css'}}
-      {{#each items}}
-        <div class="content">Content!</div>
-      {{/each}}
-    {{/momentum}}
+    <div class="container if-container">
+      {{#momentum with='velocity'}}
+        {{#if foo}}
+          <div class="content">Content!</div>
+        {{/if}}
+      {{/momentum}}
+    </div>
+  
+    <div class="container each-container">
+      {{#momentum with='velocity'}}
+        {{#each items}}
+          <div class="content">Content!</div>
+        {{/each}}
+      {{/momentum}}
+    </div>
   </div>
 </template>

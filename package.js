@@ -9,7 +9,8 @@ Package.on_use(function (api) {
     'lib/velocity/jquery.velocity.js',
     'momentum.html', 
     'momentum.js',
-    'plugins/css.js'
+    'plugins/css.js',
+    'plugins/velocity.js'
   ], 'client');
 
   api.export(['Momentum'], 'client');

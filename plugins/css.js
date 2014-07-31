@@ -17,8 +17,8 @@ Momentum.registerPlugin('css', function() {
     },
       // we could do better I guess?
     moveElement: function(node, next) {
-      hooks.removeElement(node);
-      hooks.insertElement(node, next);
+      this.removeElement(node);
+      this.insertElement(node, next);
     },
     removeElement: function(node) {
       $(node).addClass(OFFSCREEN_CLASS)

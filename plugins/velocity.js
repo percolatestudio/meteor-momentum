@@ -1,3 +1,5 @@
+// WIP: Currently, this plugin is just a testing-ground
+
 Momentum.registerPlugin('velocity', function(options) {
   return {
     insertElement: function(node, next) {

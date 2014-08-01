@@ -15,7 +15,7 @@ Template.momentum.rendered = function() {
     removeElement: Function
   });
   
-  this.firstNode.parentNode._uihooks = hooks;
+  this.lastNode._uihooks = hooks;
 }
 
 Momentum = {

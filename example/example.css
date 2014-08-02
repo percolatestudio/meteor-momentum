@@ -18,6 +18,12 @@
   height: 20px;
 }
 
+.notifications .content {
+  height: 20px;
+  width: 200px;
+  margin-bottom: 4px;
+}
+
 .plugin {
   float: left;
   margin-left: 10px;

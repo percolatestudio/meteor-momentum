@@ -1,5 +1,6 @@
 if (Meteor.isClient) {
   var Items = new Meteor.Collection(null);
+  var Notifications = new Meteor.Collection(null);
   
   Session.setDefault('foo', true)
   Template.hello.helpers({
@@ -20,5 +21,24 @@ if (Meteor.isClient) {
     'click .each-container': function() {
       Items.insert({});
     }
+  });
+  
+  Template.growl.helpers({
+    notifications: function() {
+      return Notifications.find({}, {sort: {createdAt: -1}});
+    }
   })
+  
+  Template.growl.events({
+    'click [data-add-notification]': function() {
+      var id = Notifications.insert({
+        title: 'Notification no. ' + Notifications.find().count(),
+        createdAt: new Date
+      });
+      
+      Meteor.setTimeout(function() {
+        Notifications.remove({_id: id});
+      }, 3000);
+    }
+  });
 }

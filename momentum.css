@@ -1,0 +1,18 @@
+/* XXX: I think we need these so that velocity's translateZ enables HA on
+  desktop browser. Should we make it plugin specific? It may lead to extra
+  memory use. 
+
+  http://julian.com/research/velocity/#transforms
+  http://blog.teamtreehouse.com/increase-your-sites-performance-with-hardware-accelerated-css
+*/
+div[data-momentum] {
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+  backface-visibility: hidden;
+
+  -webkit-perspective: 1000;
+  -moz-perspective: 1000;
+  -ms-perspective: 1000;
+  perspective: 1000;
+}

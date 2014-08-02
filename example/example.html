@@ -5,8 +5,7 @@
 <body>
   <h1>Momentum Example</h1>
   {{> hello}}
-  
-  
+  {{> growl}}
 </body>
 
 <template name="hello">
@@ -48,5 +47,21 @@
         {{/each}}
       {{/momentum}}
     </div>
+  </div>
+</template>
+
+<template name="growl">
+  <div class="plugin growl">
+    <h2>Plugin: growl</h2>
+    
+    <div class="container notifications">
+      {{#momentum with='growl'}}
+        {{#each notifications}}
+          <div class="content">{{title}}</div>
+        {{/each}}
+      {{/momentum}}
+    </div>
+    
+    <button data-add-notification>Add Notification</button>
   </div>
 </template>

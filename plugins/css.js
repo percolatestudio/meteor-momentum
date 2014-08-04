@@ -6,13 +6,22 @@ var OUT_CLASS = 'out';
 var EVENTS = 'webkitTransitionEnd oTransitionEnd transitionEnd ' 
   + 'msTransitionEnd transitionend';
 
-Momentum.registerPlugin('css', function() {
+Momentum.registerPlugin('css', function(options) {
+  options = _.extend({
+    // defaults
+  }, options);
+  
+  check(options.extra, Match.Optional(Function));
+  
   return {
     insertElement: function(node, next) {
-      console.log('insertElement', node)
+      var klass = IN_CLASS;
+      if (options.extra)
+        klass += ' ' + options.extra();
+      
       $(node)
         .addClass(OFFSCREEN_CLASS)
-        .addClass(IN_CLASS)
+        .addClass(klass)
         .insertBefore(next);
   
       Deps.afterFlush(function() {
@@ -24,7 +33,7 @@ Momentum.registerPlugin('css', function() {
           .removeClass(OFFSCREEN_CLASS)
           .on(EVENTS, function(e) {
             if (e.target === node)
-              $(node).removeClass(IN_CLASS);
+              $(node).removeClass(klass);
           });
       });
     },
@@ -34,10 +43,13 @@ Momentum.registerPlugin('css', function() {
       this.insertElement(node, next);
     },
     removeElement: function(node) {
-      console.log('removeElement', node)
+      var klass = OUT_CLASS;
+      if (options.extra)
+        klass += ' ' + options.extra();
+      
       // add the out class and redraw
       $(node)
-        .addClass(OUT_CLASS)
+        .addClass(klass)
         .width();
       
       // now make it transition off

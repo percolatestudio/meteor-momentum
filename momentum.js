@@ -7,7 +7,7 @@ Template.momentum.rendered = function() {
   if (! plugin)
     return console.error("Can't find momentum plugin '" + this.data.with + "'");
 
-  var hooks = plugin(_.without(this.data, 'with'));
+  var hooks = plugin(_.omit(this.data, 'with'));
   
   check(hooks, {
     insertElement: Function,

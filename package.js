@@ -11,6 +11,7 @@ Package.on_use(function (api) {
     'momentum.html', 
     'momentum.js',
     'momentum.css',
+    'plugins/none.js',
     'plugins/css.js',
     'plugins/velocity.js',
     'plugins/growl.js'

@@ -8,7 +8,8 @@ var EVENTS = 'webkitTransitionEnd oTransitionEnd transitionEnd '
 
 Momentum.registerPlugin('css', function(options) {
   options = _.extend({
-    // defaults
+    // extra: a function that returns an extra class to be added
+    // timeout: a "maximum" time that the transition can take
   }, options);
   
   check(options.extra, Match.Optional(Function));
@@ -28,13 +29,19 @@ Momentum.registerPlugin('css', function(options) {
         // call width to force the browser to draw before we do anything
         $(node).width()
         
+        var done = _.once(function() {
+          $(node).removeClass(klass);
+        });
+        
         // now bring it in
         $(node)
           .removeClass(OFFSCREEN_CLASS)
           .on(EVENTS, function(e) {
-            if (e.target === node)
-              $(node).removeClass(klass);
+            (e.target === node) && done()
           });
+        
+        if (options.timeout)
+          Meteor.setTimeout(done, options.timeout);
       });
     },
       // we could do better I guess?
@@ -52,13 +59,19 @@ Momentum.registerPlugin('css', function(options) {
         .addClass(klass)
         .width();
       
+      var done = _.once(function() {
+        $(node).remove()
+      });
+      
       // now make it transition off
       $(node)
         .addClass(OFFSCREEN_CLASS)
         .on(EVENTS, function(e) {
-          if (e.target === node)
-            $(node).remove()
+          (e.target === node) && done();
         });
+      
+      if (options.timeout)
+        Meteor.setTimeout(done, options.timeout);
     }
   }
 });

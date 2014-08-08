@@ -35,11 +35,24 @@ Momentum.registerPlugin('css', function(options) {
           options.onComplete && options.onComplete(node);
         });
         
-        // now bring it in
-        $(node)
-          .removeClass(OFFSCREEN_CLASS)
+        $(node).removeClass(OFFSCREEN_CLASS);
+        
+        // XXX: We have to bind the event listener to the PARENT of the node,
+        //  because Blaze runs jQ.cleanNode before "removing" the node.
+        //
+        // What this means is, that if we are mid-way through our "add"
+        // transition, and then the node is "removed", then even though
+        // we may not actually remove the node from the DOM, this 
+        // event will never fire, meaning classes and junk will be left on
+        // the node. This seems a pretty reasonable workaround.
+        //
+        // If the parent itself is "removed".. well then we'll have a problem.
+        $(node).parent()
           .on(EVENTS, function(e) {
-            (e.target === node) && done()
+            if (e.target === node) {
+              $(this).off(e);
+              done()
+            }
           });
         
         if (options.timeout)
@@ -70,7 +83,10 @@ Momentum.registerPlugin('css', function(options) {
       $(node)
         .addClass(OFFSCREEN_CLASS)
         .on(EVENTS, function(e) {
-          (e.target === node) && done();
+          if (e.target === node) {
+            $(this).off(e);
+            done();
+          }
         });
       
       if (options.timeout)

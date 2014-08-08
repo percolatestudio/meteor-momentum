@@ -10,6 +10,7 @@ Momentum.registerPlugin('css', function(options) {
   options = _.extend({
     // extra: a function that returns an extra class to be added
     // timeout: a "maximum" time that the transition can take
+    // onComplete: callback when transition is finished
   }, options);
   
   check(options.extra, Match.Optional(Function));
@@ -31,6 +32,7 @@ Momentum.registerPlugin('css', function(options) {
         
         var done = _.once(function() {
           $(node).removeClass(klass);
+          options.onComplete && options.onComplete(node);
         });
         
         // now bring it in
@@ -60,7 +62,8 @@ Momentum.registerPlugin('css', function(options) {
         .width();
       
       var done = _.once(function() {
-        $(node).remove()
+        $(node).remove();
+        options.onComplete && options.onComplete(node);
       });
       
       // now make it transition off

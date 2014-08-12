@@ -13,6 +13,10 @@ Momentum.registerPlugin('css', function(options) {
     // onComplete: callback when transition is finished
   }, options);
   
+  if (_.isString(options.extra)) {
+    var extra = options.extra;
+    options.extra = function() { return extra };
+  }
   check(options.extra, Match.Optional(Function));
   
   return {

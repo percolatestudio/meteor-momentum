@@ -16,7 +16,8 @@ Package.on_use(function (api) {
     'plugins/dynamic.js',
     'plugins/css.js',
     'plugins/velocity.js',
-    'plugins/growl.js'
+    'plugins/growl.js',
+    'plugins/side-to-side.js'
   ], 'client');
 
   api.export(['Momentum'], 'client');

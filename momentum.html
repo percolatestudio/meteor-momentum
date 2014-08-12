@@ -2,6 +2,8 @@
   <!-- XXX: Ask MDG to attach UI hooks to DomRange instead so we dont need 
     this wrapper -->
   <div data-momentum>
-    {{> UI.contentBlock}}
+    {{#_momentumTrigger}}
+      {{> UI.contentBlock}}
+    {{/_momentumTrigger}}
   </div>
 </template>

@@ -1,10 +1,10 @@
 // XXX: make this a plugin itself?
 var sideToSide = function(fromX, toX) {
   return function(options) {
-    options = _.extend({}, options, {
+    options = _.extend({
       duration: 500,
       easing: 'ease-in-out'
-    });
+    }, options);
   
     return {
       insertElement: function(node, next) {

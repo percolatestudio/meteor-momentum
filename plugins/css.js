@@ -10,7 +10,6 @@ Momentum.registerPlugin('css', function(options) {
   options = _.extend({
     // extra: a function that returns an extra class to be added
     // timeout: a "maximum" time that the transition can take
-    // onComplete: callback when transition is finished
   }, options);
   
   if (_.isString(options.extra)) {
@@ -20,7 +19,7 @@ Momentum.registerPlugin('css', function(options) {
   check(options.extra, Match.Optional(Function));
   
   return {
-    insertElement: function(node, next) {
+    insertElement: function(node, next, done) {
       var klass = IN_CLASS;
       if (options.extra)
         klass += ' ' + options.extra();
@@ -34,9 +33,9 @@ Momentum.registerPlugin('css', function(options) {
         // call width to force the browser to draw before we do anything
         $(node).width()
         
-        var done = _.once(function() {
+        var finish = _.once(function() {
           $(node).removeClass(klass);
-          options.onComplete && options.onComplete(node);
+          done();
         });
         
         $(node).removeClass(OFFSCREEN_CLASS);
@@ -55,20 +54,22 @@ Momentum.registerPlugin('css', function(options) {
           .on(EVENTS, function(e) {
             if (e.target === node) {
               $(this).off(e);
-              done()
+              finish()
             }
           });
         
         if (options.timeout)
-          Meteor.setTimeout(done, options.timeout);
+          Meteor.setTimeout(finish, options.timeout);
       });
     },
       // we could do better I guess?
-    moveElement: function(node, next) {
-      this.removeElement(node);
-      this.insertElement(node, next);
+    moveElement: function(node, next, done) {
+      var self = this;
+      self.removeElement(node, function() {
+        self.insertElement(node, next, done);
+      });
     },
-    removeElement: function(node) {
+    removeElement: function(node, done) {
       var klass = OUT_CLASS;
       if (options.extra)
         klass += ' ' + options.extra();
@@ -78,9 +79,9 @@ Momentum.registerPlugin('css', function(options) {
         .addClass(klass)
         .width();
       
-      var done = _.once(function() {
+      var finish = _.once(function() {
         $(node).remove();
-        options.onComplete && options.onComplete(node);
+        done();
       });
       
       // now make it transition off
@@ -89,12 +90,12 @@ Momentum.registerPlugin('css', function(options) {
         .on(EVENTS, function(e) {
           if (e.target === node) {
             $(this).off(e);
-            done();
+            finish();
           }
         });
       
       if (options.timeout)
-        Meteor.setTimeout(done, options.timeout);
+        Meteor.setTimeout(finish, options.timeout);
     }
   }
 });

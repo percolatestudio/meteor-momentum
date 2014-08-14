@@ -1,20 +1,16 @@
 Momentum.registerPlugin('none', function(options) {
-  options = _.extend({
-    // onComplete: callback when transition is finished
-  }, options);
-  
   return {
-    insertElement: function(node, next) {
+    insertElement: function(node, next, done) {
       next.parentNode.insertBefore(node, next);
-      options.onComplete && options.onComplete(node);
+      done();
     },
-    moveElement: function(node, next) {
+    moveElement: function(node, next, done) {
       next.parentNode.insertBefore(node, next);
-      options.onComplete && options.onComplete(node);
+      done();
     },
-    removeElement: function(node) {
+    removeElement: function(node, done) {
       node.parentNode.removeChild(node);
-      options.onComplete && options.onComplete(node);
+      done();
     }
   }
 });

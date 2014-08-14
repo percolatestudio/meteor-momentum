@@ -7,7 +7,7 @@ var sideToSide = function(fromX, toX) {
     }, options);
   
     return {
-      insertElement: function(node, next) {
+      insertElement: function(node, next, done) {
         var $node = $(node);
       
         $node
@@ -24,14 +24,17 @@ var sideToSide = function(fromX, toX) {
           }, {
             easing: options.easing,
             duration: options.duration,
-            queue: false
+            queue: false,
+            complete: done
           });
       },
-      moveElement: function(node, next) {
-        this.removeElement(node);
-        this.insertElement(node, next);
+      moveElement: function(node, next, done) {
+        var self = this;
+        self.removeElement(node, function() {
+          self.insertElement(node, next, done);
+        });
       },
-      removeElement: function(node) {
+      removeElement: function(node, done) {
         var $node = $(node);
 
         $node
@@ -42,6 +45,7 @@ var sideToSide = function(fromX, toX) {
             easing: options.easing,
             complete: function() {
               $node.remove();
+              done();
             }
           });
       }

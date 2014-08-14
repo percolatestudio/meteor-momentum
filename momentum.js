@@ -15,7 +15,19 @@ Template.momentum.rendered = function() {
     removeElement: Function
   });
   
-  this.lastNode._uihooks = hooks;
+  // Pass in the _identity function for the done callback as by default
+  // momentum doesn't care about when transitions are done.
+  this.lastNode._uihooks = {
+    insertElement: function(node, next) {
+      hooks.insertElement(node, next, _.identity);
+    },
+    moveElement: function(node, next) {
+      hooks.moveElement(node, next, _.identity);
+    },
+    removeElement: function(node, done) {
+      hooks.removeElement(node, _.identity);
+    }
+  };
 }
 
 Momentum = {

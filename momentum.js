@@ -2,13 +2,7 @@ Template.momentum.rendered = function() {
   if (! this.data || ! this.data.with)
     return console.error("Missing 'with' argument to momentum");
 
-  var plugin;
-  if (_.isFunction(this.data.with)) {
-    plugin = Momentum.plugins.dynamic;
-    this.data.options = this.data.with;
-  } else {
-    plugin = Momentum.plugins[this.data.with];
-  }
+  var plugin = Momentum.plugins[this.data.with];
 
   if (! plugin)
     return console.error("Can't find momentum plugin '" + this.data.with + "'");

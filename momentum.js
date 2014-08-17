@@ -9,6 +9,14 @@ Template.momentum.rendered = function() {
 
   var hooks = plugin(_.omit(this.data, 'with'));
   
+  // default is to remove, *then* add
+  if (! hooks.moveElement)
+    hooks.moveElement = function(node, next, done) {
+      hooks.removeElement(node, function() {
+        hooks.insertElement(node, next, done);
+      });
+    }
+  
   check(hooks, {
     insertElement: Function,
     moveElement: Function,

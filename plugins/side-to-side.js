@@ -28,12 +28,6 @@ var sideToSide = function(fromX, toX) {
             complete: done
           });
       },
-      moveElement: function(node, next, done) {
-        var self = this;
-        self.removeElement(node, function() {
-          self.insertElement(node, next, done);
-        });
-      },
       removeElement: function(node, done) {
         var $node = $(node);
 

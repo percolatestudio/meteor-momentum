@@ -11,7 +11,6 @@ Package.on_use(function (api) {
     'lib/velocity/velocity.ui.js',
     'momentum.html', 
     'momentum.js',
-    'momentum.css',
     'plugins/none.js',
     'plugins/css.js',
     'plugins/velocity.js',

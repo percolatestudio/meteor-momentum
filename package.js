@@ -6,7 +6,7 @@ Package.describe({
 });
 
 Package.on_use(function (api) {
-  api.versionsFrom('METEOR@0.9.1-rc2');
+  api.versionsFrom('METEOR@0.9.0.1');
   api.use(['templating', 'check', 'jquery', 'underscore'], 'client');
   
   api.add_files([

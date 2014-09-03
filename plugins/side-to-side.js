@@ -11,16 +11,10 @@ var sideToSide = function(fromX, toX) {
         var $node = $(node);
       
         $node
+          .css('transform', 'translateX(' + fromX + ')')
           .insertBefore(next)
           .velocity({
-            translateZ: 0,
-            translateX: [fromX]
-          }, {
-            duration: 0,
-            queue: false
-          })
-          .velocity({
-            translateX: [0]
+            translateX: [0, fromX]
           }, {
             easing: options.easing,
             duration: options.duration,

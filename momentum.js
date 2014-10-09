@@ -1,13 +1,13 @@
 Template.momentum.rendered = function() {
-  if (! this.data || ! this.data.with)
-    return console.error("Missing 'with' argument to momentum");
+  if (! this.data || ! this.data.plugin)
+    return console.error("Missing 'plugin' argument to momentum");
 
-  var plugin = Momentum.plugins[this.data.with];
+  var plugin = Momentum.plugins[this.data.plugin];
 
   if (! plugin)
-    return console.error("Can't find momentum plugin '" + this.data.with + "'");
+    return console.error("Can't find momentum plugin '" + this.data.plugin + "'");
 
-  var hooks = plugin(_.omit(this.data, 'with'));
+  var hooks = plugin(_.omit(this.data, 'plugin'));
   
   // default is to remove, *then* add
   if (! hooks.moveElement)

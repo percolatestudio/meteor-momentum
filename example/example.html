@@ -13,7 +13,7 @@
     <h2>Plugin: css</h2>
   
     <div class="container if-container">
-      {{#momentum with='css'}}
+      {{#momentum plugin='css'}}
         {{#if foo}}
           <div class="content">Content!</div>
         {{/if}}
@@ -21,7 +21,7 @@
     </div>
   
     <div class="container each-container">
-      {{#momentum with='css'}}
+      {{#momentum plugin='css'}}
         {{#each items}}
           <div class="content">Content!</div>
         {{/each}}
@@ -33,7 +33,7 @@
     <h2>Plugin: velocity</h2>
   
     <div class="container if-container">
-      {{#momentum with='velocity'}}
+      {{#momentum plugin='velocity'}}
         {{#if foo}}
           <div class="content">Content!</div>
         {{/if}}
@@ -41,7 +41,7 @@
     </div>
   
     <div class="container each-container">
-      {{#momentum with='velocity'}}
+      {{#momentum plugin='velocity'}}
         {{#each items}}
           <div class="content">Content!</div>
         {{/each}}
@@ -55,7 +55,7 @@
     <h2>Plugin: growl</h2>
     
     <div class="container notifications">
-      {{#momentum with='growl'}}
+      {{#momentum plugin='growl'}}
         {{#each notifications}}
           <div class="content">{{title}}</div>
         {{/each}}

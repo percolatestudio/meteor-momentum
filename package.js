@@ -1,13 +1,13 @@
 Package.describe({
   summary: "Reactive animations",
-  version: "0.5.0",
+  version: "0.6.0",
   name: "percolate:momentum",
   git: "https://github.com/percolatestudio/meteor-momentum.git"
 });
 
 Package.on_use(function (api) {
   api.versionsFrom('METEOR@0.9.2');
-  api.use(['templating', 'check', 'jquery', 'underscore', 'percolate:velocityjs'
+  api.use(['templating', 'check', 'jquery', 'underscore', 'percolate:velocityjs@1.0.0'
       ], 'client');
   
   api.add_files([

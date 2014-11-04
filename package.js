@@ -1,6 +1,6 @@
 Package.describe({
   summary: "Reactive animations",
-  version: "0.6.0",
+  version: "0.6.1",
   name: "percolate:momentum",
   git: "https://github.com/percolatestudio/meteor-momentum.git"
 });
@@ -17,7 +17,8 @@ Package.on_use(function (api) {
     'plugins/css.js',
     'plugins/velocity.js',
     'plugins/growl.js',
-    'plugins/side-to-side.js'
+    'plugins/side-to-side.js',
+    'plugins/fade.js'
   ], 'client');
 
   api.export(['Momentum'], 'client');

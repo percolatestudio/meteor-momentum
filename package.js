@@ -18,6 +18,7 @@ Package.on_use(function (api) {
     'plugins/velocity.js',
     'plugins/growl.js',
     'plugins/side-to-side.js',
+    'plugins/slide-height.js',
     'plugins/fade.js'
   ], 'client');
 

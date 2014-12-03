@@ -11,6 +11,7 @@ Package.on_use(function (api) {
       ], 'client');
   
   api.add_files([
+    'lib/impulse.js',
     'momentum.html', 
     'momentum.js',
     'plugins/none.js',

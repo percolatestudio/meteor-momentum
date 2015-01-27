@@ -17,11 +17,9 @@ Template.momentum.rendered = function() {
       });
     }
   
-  check(hooks, {
-    insertElement: Function,
-    moveElement: Function,
-    removeElement: Function
-  });
+  check(hooks, Match.Where(function (x) {
+    return _.isFunction(x.insertElement) && _.isFunction(x.moveElement) && _.isFunction(x.removeElement);
+  }));
   
   // Pass in the _identity function for the done callback as by default
   // momentum doesn't care about when transitions are done.

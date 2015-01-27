@@ -1,6 +1,6 @@
 Package.describe({
   summary: "Reactive animations",
-  version: "0.7.0",
+  version: "0.7.1",
   name: "percolate:momentum",
   git: "https://github.com/percolatestudio/meteor-momentum.git"
 });

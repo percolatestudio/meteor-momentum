@@ -4,10 +4,10 @@ Momentum.registerPlugin('fade', function(options) {
       $(node)
         .hide()
         .insertBefore(next)
-        .fadeIn();
+        .velocity('fadeIn');
     },
     removeElement: function(node) {
-      $(node).fadeOut(function() {
+      $(node).velocity('fadeOut', function() {
         $(this).remove();
       });
     }

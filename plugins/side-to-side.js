@@ -19,7 +19,10 @@ var sideToSide = function(fromX, toX) {
             easing: options.easing,
             duration: options.duration,
             queue: false,
-            complete: done
+            complete: function() {
+              $node.css('transform', '');
+              done();
+            }
           });
       },
       removeElement: function(node, done) {

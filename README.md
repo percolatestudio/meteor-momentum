@@ -5,6 +5,10 @@ Reactive animation package for Meteor.
 
 Momentum allows you to easily and simply re-use animation behaviour in your app via plugins that can be shared easily.
 
+# Caveat
+
+We published this package as an exploration of an idea rather than something we rigorously maintain for public consumption. As such, the plugins that we ship probably won't work for many use cases in the wild. You're encouraged to create your own custom plugins specific to the needs of your application. Momentum is designed as a thin interface to `uihooks` that can be declaratively used in your templates.
+
 # Install
 
 ```
@@ -32,6 +36,8 @@ For example
 ```
 
 When the `show` helper changes the element will appear as normal, but mediated by the `right-to-left` plugin (see the examples folder for some example plugins).
+
+See also: [momentum-iron-router](https://atmospherejs.com/percolate/momentum-iron-router)
 
 # Built-in Plugins
 

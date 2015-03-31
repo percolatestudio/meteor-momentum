@@ -20,18 +20,27 @@ Template.momentum.rendered = function() {
   check(hooks, Match.Where(function (x) {
     return _.isFunction(x.insertElement) && _.isFunction(x.moveElement) && _.isFunction(x.removeElement);
   }));
+
+  // get either hooks or the 'none' plugin hooks depending if we are disabled
+  var getHooks = function() {
+    if (Momentum.disabled) {
+      return Momentum.plugins.none();
+    } else {
+      return hooks;
+    }
+  }
   
   // Pass in the _identity function for the done callback as by default
   // momentum doesn't care about when transitions are done.
   this.lastNode._uihooks = {
     insertElement: function(node, next) {
-      hooks.insertElement(node, next, _.identity);
+      getHooks().insertElement(node, next, _.identity);
     },
     moveElement: function(node, next) {
-      hooks.moveElement(node, next, _.identity);
+      getHooks().moveElement(node, next, _.identity);
     },
     removeElement: function(node, done) {
-      hooks.removeElement(node, _.identity);
+      getHooks().removeElement(node, _.identity);
     }
   };
 }
@@ -42,5 +51,9 @@ Momentum = {
     check(name, String);
     check(plugin, Function)
     this.plugins[name] = plugin;
+  },
+  disabled: false,
+  disable: function() {
+    this.disabled = true;
   }
 }

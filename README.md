@@ -64,6 +64,9 @@ Animate height in from zero to full, out from full to zero. Works with auto-heig
 # Your own plugin
 
 Writing a plugin is simple. See the existing plugins for examples. You just need to provide an `insertElement` and `removeElement` (and optionally `moveElement`) hook. These have the same API as [Meteor's `_uihooks`](https://github.com/meteor/meteor/blob/master/History.md#blaze-2).
+# Disabling momentum
+
+On certain devices you may wish to disable momentum. To do, so call `Momentum.disable()`.
 
 # Contributions
 

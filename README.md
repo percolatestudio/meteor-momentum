@@ -68,3 +68,7 @@ Writing a plugin is simple. See the existing plugins for examples. You just need
 # Contributions
 
 It would make sense to build packages that provide extra plugins. If there's something you need in the core package to make your package work, please, open an issue or make a pull request.
+
+## License 
+
+MIT. (c) Percolate Studio, maintained by Zoltan Olah (@zol).

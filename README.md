@@ -39,6 +39,10 @@ When the `show` helper changes the element will appear as normal, but mediated b
 
 See also: [momentum-iron-router](https://atmospherejs.com/percolate/momentum-iron-router)
 
+# Examples
+
+See the example directory in the project, also hosted at momentum-example.meteor.com
+
 # Built-in Plugins
 
 ## `css`

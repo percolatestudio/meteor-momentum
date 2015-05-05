@@ -41,7 +41,7 @@ See also: [momentum-iron-router](https://atmospherejs.com/percolate/momentum-iro
 
 # Examples
 
-See the example directory in the project, also hosted at [momentum-example.meteor.com](momentum-example.meteor.com)
+See the example directory in the project, also hosted at [momentum-example.meteor.com](http://momentum-example.meteor.com)
 
 # Built-in Plugins
 

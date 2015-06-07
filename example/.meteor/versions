@@ -34,8 +34,7 @@ mobile-status-bar@1.0.1
 mongo@1.0.8
 observe-sequence@1.0.3
 ordered-dict@1.0.1
-percolate:momentum@0.6.3
-percolate:velocityjs@1.0.0
+percolate:momentum@0.7.2
 random@1.0.1
 reactive-dict@1.0.4
 reactive-var@1.0.3
@@ -51,5 +50,6 @@ tracker@1.0.3
 ui@1.0.4
 underscore@1.0.1
 url@1.0.2
+velocityjs:velocityjs@1.2.1
 webapp-hashing@1.0.1
 webapp@1.1.4

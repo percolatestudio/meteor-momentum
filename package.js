@@ -7,11 +7,11 @@ Package.describe({
 
 Package.on_use(function (api) {
   api.versionsFrom('METEOR@0.9.2');
-  api.use(['templating', 'check', 'jquery', 'underscore', 'percolate:velocityjs@1.1.0'
+  api.use(['templating', 'check', 'jquery', 'underscore', 'velocityjs:velocityjs@1.2.1'
       ], 'client');
-  
+
   api.add_files([
-    'momentum.html', 
+    'momentum.html',
     'momentum.js',
     'plugins/none.js',
     'plugins/css.js',

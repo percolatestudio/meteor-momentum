@@ -57,10 +57,6 @@
       "1.0.1"
     ],
     [
-      "percolate:velocityjs",
-      "1.1.0"
-    ],
-    [
       "random",
       "1.0.1"
     ],
@@ -79,6 +75,10 @@
     [
       "underscore",
       "1.0.1"
+    ],
+    [
+      "velocityjs:velocityjs",
+      "1.2.1"
     ]
   ],
   "pluginDependencies": [],

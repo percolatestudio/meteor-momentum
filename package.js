@@ -5,12 +5,12 @@ Package.describe({
   git: "https://github.com/percolatestudio/meteor-momentum.git"
 });
 
-Package.on_use(function (api) {
+Package.onUse(function (api) {
   api.versionsFrom('METEOR@0.9.2');
   api.use(['templating', 'check', 'jquery', 'underscore', 'velocityjs:velocityjs@1.2.1'
       ], 'client');
 
-  api.add_files([
+  api.addFiles([
     'momentum.html',
     'momentum.js',
     'plugins/none.js',
